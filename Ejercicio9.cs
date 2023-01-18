@@ -27,7 +27,7 @@ namespace TareaProg1
 
             char[] digitos = numero.ToCharArray();
 
-            if (digitos[1] == digitos[3])
+            if (digitos[1] == digitos[2])
             {
                 Console.Write($"El segundo dígito es igual al penúltimo");
             }else
