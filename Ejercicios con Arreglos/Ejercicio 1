@@ -1,1 +1,42 @@
-hola
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TareaProg1
+{
+    public static class Ejercicio1
+    {
+        // Leer un número entero de dos dígitos y determinar a cuánto es igual la suma de sus dígitos
+        public static void Inicio()
+        {
+            // Declaración del arreglo de enteros
+            int[] numeros = new int[10];
+
+            // Lectura de los 10 enteros
+            Console.WriteLine("Ingrese 10 numeros:");
+            for (int i = 0; i < 10; i++)
+            {
+                numeros[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            // Inicializamos el mayor en el primer elemento del arreglo
+            int mayor = numeros[0];
+            int posicion = 0; //inicializamos la posicion en 0
+
+            // Recorremos el arreglo buscando el número mayor
+            for (int i = 1; i < 10; i++)
+            {
+                if (numeros[i] > mayor)
+                {
+                    mayor = numeros[i];
+                    posicion = i; //guardamos la posicion del numero mayor
+                }
+            }
+
+            // Imprimimos el número mayor y su posicion
+            Console.WriteLine("El numero mayor es " + mayor + " y se encuentra en la posicion " + posicion);
+        }
+    }
+}
