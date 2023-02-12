@@ -1,1 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
+// Leer 10 enteros, almacenarlos en un arreglo y determinar en qué posición de del arreglo está el mayor número par leído.
+namespace Ejercicio2
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Declaracion de arreglo
+            int[] numeros = new int[10];
+            int mayorPar = int.MinValue;
+            int posicion = -1;
+
+            // Almacenamiento de los valores
+            Console.WriteLine("Leer 10 enteros:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write("Número {0}: ", i + 1);
+                numeros[i] = int.Parse(Console.ReadLine());
+
+                // Determinar numero mayor y si es par
+                if (numeros[i] % 2 == 0 && numeros[i] > mayorPar)
+                {
+                    mayorPar = numeros[i];
+                    posicion = i;
+                }
+            }
+
+            if (posicion != -1)
+            {
+                // Resultado
+                Console.WriteLine("El mayor número par es {0} y está en la posición {1}.", mayorPar, posicion);
+            }
+            else
+            {
+                Console.WriteLine("No se ha leído ningún número par.");
+            }
+
+            Console.ReadLine();
+        }
+    }
+}
