@@ -1,1 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Ejercicio_3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Declaracion de variables
+            int[] numeros = new int[10];
+            int mayorPrimo = int.MinValue;
+            int posicion = -1;
+
+            // Almacenamiento de valores
+            Console.WriteLine("Determinar en qué posición del arreglo está el mayor número primo leído: \n");
+            Console.WriteLine("Leer 10 enteros:");
+            for (int i = 0; i < 10; i++)
+            {
+                                Console.Write("Número {0}: ", i + 1);
+                numeros[i] = int.Parse(Console.ReadLine());
+
+                if (EsPrimo(numeros[i]) && numeros[i] > mayorPrimo)
+                {
+                    mayorPrimo = numeros[i];
+                    posicion = i;
+                }
+            }
+
+            if (posicion != -1)
+            {
+                Console.WriteLine("El mayor número primo es {0} y está en la posición {1}.", mayorPrimo, posicion);
+            }
+            else
+            {
+                Console.WriteLine("No se ha leído ningún número primo.");
+            }
+
+            Console.ReadLine();
+        }
+
+        static bool EsPrimo(int num)
+        {
+            if (num <= 1)
+            {
+                return false;
+            }
+
+            for (int i = 2; i <= Math.Sqrt(num); i++)
+            {
+                if (num % i == 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
+}
 
