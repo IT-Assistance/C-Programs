@@ -1,1 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+// Leer 10 números enteros, almacenarlos en un arreglo.
+// Luego leer un entero y determinar cuántos divisores exactos tiene este último número entre los valores almacenados en el arreglo.
+namespace Ejercicio_10
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[10];
+            int count = 0;
+
+            Console.WriteLine("Ingresa 10 números enteros:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write("Número {0}: ", i + 1);
+                numbers[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.Write("Ingresa otro número: ");
+            int n = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (n % numbers[i] == 0)
+                {
+                    count++;
+                }
+            }
+
+            Console.WriteLine("El número {0} tiene {1} divisores exactos entre los números almacenados en el arreglo.", n, count);
+            Console.ReadLine();
+        }
+    }
+}
 
