@@ -1,1 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+// Leer 10 números enteros, almacenarlos en un arreglo y calcular la factorial a cada uno de los números leídos almacenándolos en otro arreglo
+namespace Ejercicio_9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[10];
+            int[] factorials = new int[10];
+
+            Console.WriteLine("Ingresa 10 números enteros:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write("Número {0}: ", i + 1);
+                numbers[i] = int.Parse(Console.ReadLine());
+                factorials[i] = Factorial(numbers[i]);
+            }
+
+            Console.WriteLine("Los factoriales son:");
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("{0}! = {1}", numbers[i], factorials[i]);
+            }
+
+            Console.ReadLine();
+        }
+
+        static int Factorial(int number)
+        {
+            int result = 1;
+            for (int i = 1; i <= number; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
+    }
+}
 
