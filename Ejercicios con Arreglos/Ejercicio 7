@@ -1,1 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+// Leer 10 números enteros, almacenarlos en un arreglo y determinar a cuánto es igual el promedio entero de los datos del arreglo
+namespace Ejercicio_7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[10];
+            int sum = 0;
+
+            Console.WriteLine("Ingrese 10 números enteros:");
+            for (int i = 0; i < 10; i++)
+            {
+                numbers[i] = Convert.ToInt32(Console.ReadLine());
+                sum += numbers[i];
+            }
+
+            int average = sum / 10;
+
+            Console.WriteLine("El promedio entero de los datos del arreglo es igual a: " + average);
+            Console.ReadLine();
+        }
+    }
+}
 
