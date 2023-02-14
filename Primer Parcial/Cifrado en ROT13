@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ROT13
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Leer el texto cifrado
+            Console.WriteLine("Con este programa puedes decodificar mensajes cifrados en ROT13 \n");
+            Console.WriteLine("Introduzca el texto que decea descifrar: ");
+            String cifrado;
+            cifrado = Console.ReadLine();        
+
+            // Validación de que todo esté en mayúscula
+            while(!Check(cifrado))
+            {
+                Console.WriteLine("Amigo, todo debe estar en mayuscula \n");
+                Console.WriteLine("Ingrese el valor de nuevo");
+                cifrado = Console.ReadLine();
+            }
+
+            // Descifrar el texto con la función creada
+            Console.WriteLine(ROT13(cifrado));
+            Console.ReadKey();
+        }
+
+        // Función para validar mayúscula
+        static bool Check(string texto)
+        {
+            foreach (char c in texto)
+            {
+                if (char.IsLower(c))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // Función para cifrar en ROT13
+            static string ROT13(string input)
+        {
+            // Colocar texto a cifrar en un arreglo
+            char[] array = input.ToCharArray();
+            for (int i = 0; i < array.Length; i++)
+
+            {
+                int number = (int)array[i];
+                                
+                if (number >= 'A' && number <= 'Z')
+                {
+                    if (number > 'M')
+                    {
+                        number -= 13;
+                    }
+                    else
+                    {
+                        number += 13;
+                    }
+                }
+                array[i] = (char)number;
+            }
+            return new string(array);
+
+       
+
+        }
+    }
+}
