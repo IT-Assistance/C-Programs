@@ -1,1 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Polimorfismo
+{
+    public abstract class Perro
+    {
+        public virtual string ladrar()
+        {
+            return "Perro Ladrando";
+        }
+
+        public abstract string Dormir();
+
+    }
+    public class Bulldog : Perro
+    {
+        public override string ladrar()
+        {
+            return "Bulldog Ladrando";
+        }
+
+        public override string Dormir()
+        {
+            return "Bulldog Durmiendo";
+        }
+    }
+    public class Chihuahua : Perro
+    {
+        public override string ladrar()
+        {
+            return "Chihuahua Ladrando";
+        }
+        public override string Dormir()
+        {
+            return "Chihuahua Durmiendo";
+        }
+    }
+}
 
