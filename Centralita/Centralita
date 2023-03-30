@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-class Practica2
+public class Practica2
 {
     static void Main(string[] args)
     {
@@ -21,9 +18,9 @@ class Practica2
         centralita.AgregarLlamada(llamada3);
         centralita.AgregarLlamada(llamada4);
 
-        Console.WriteLine("Informe de la central telefónica:");
-        Console.WriteLine("Número total de llamadas: {0}", centralita.NumeroTotalLlamadas);
-        Console.WriteLine("Facturación total: {0:C}", centralita.FacturacionTotal);
+        Console.WriteLine("Informe de la central telefonica:");
+        Console.WriteLine("\nNumero total de llamadas: {0}", centralita.NumeroTotalLlamadas);
+        Console.WriteLine("\nFacturacion total: {0:C}", centralita.FacturacionTotal);
     }
 }
 
@@ -33,7 +30,6 @@ abstract class Llamada
     protected string destino;
     protected DateTime fecha;
     protected int duracion;
-
     public Llamada(string origen, string destino, DateTime fecha, int duracion)
     {
         this.origen = origen;
@@ -41,95 +37,84 @@ abstract class Llamada
         this.fecha = fecha;
         this.duracion = duracion;
     }
-
     public abstract decimal CalcularCosto();
-
     public override string ToString()
     {
-        return String.Format("Origen: {0}, Destino: {1}, Fecha: {2}, Duración: {3}",
-            origen, destino, fecha.ToString("yyyy/MM/dd hh:mm:ss"), duracion);
+        return String.Format("Origen: {0}, Destino: {1}, Fecha: {2}, Duración: {3}", origen, destino, fecha.ToString("yyyy/MM/dd hh:mm:ss"), duracion);
     }
 }
 
-class LlamadaLocal : Llamada
-{
-    public LlamadaLocal(string origen, string destino, DateTime fecha, int duracion)
-        : base(origen, destino, fecha, duracion)
-    {
-    }
 
+class LlamadaLocal: Llamada
+{
+    public LlamadaLocal(string origen, string destino, DateTime fecha, int duracion): base(origen, destino, fecha, duracion)
+    {}
     public override decimal CalcularCosto()
     {
-        const decimal precioPorSegundo = 0.15M;
+        const decimal precioPorSegundo = 0.15 M;
         return duracion * precioPorSegundo;
     }
 }
 
-class LlamadaProvincial : Llamada
+
+class LlamadaProvincial: Llamada
 {
     private string franja;
-
-    public LlamadaProvincial(string origen, string destino, DateTime fecha, int duracion, string franja)
-        : base(origen, destino, fecha, duracion)
+    public LlamadaProvincial(string origen, string destino, DateTime fecha, int duracion, string franja): base(origen, destino, fecha, duracion)
     {
         this.franja = franja;
     }
-
     public override decimal CalcularCosto()
     {
         decimal precioPorSegundo;
-
         switch (franja)
         {
             case "1":
-                precioPorSegundo = 0.20M;
+                precioPorSegundo = 0.20 M;
                 break;
             case "2":
-                precioPorSegundo = 0.25M;
+                precioPorSegundo = 0.25 M;
                 break;
             case "3":
-                precioPorSegundo = 0.30M;
+                precioPorSegundo = 0.30 M;
                 break;
             default:
                 throw new ArgumentException("La franja horaria no es válida.");
         }
-
         return duracion * precioPorSegundo;
     }
 }
 
+
 class Centralita
 {
     private string nombre;
-    private List<Llamada> llamadas;
-
+    private List < Llamada > llamadas;
     public Centralita(string nombre)
     {
         this.nombre = nombre;
-        this.llamadas = new List<Llamada>();
+        this.llamadas = new List < Llamada > ();
     }
-
     public void AgregarLlamada(Llamada llamada)
     {
         llamadas.Add(llamada);
     }
-
     public int NumeroTotalLlamadas
     {
-        get { return llamadas.Count; }
+        get
+        {
+            return llamadas.Count;
+        }
     }
-
     public decimal FacturacionTotal
     {
         get
         {
             decimal total = 0;
-
-            foreach (Llamada llamada in llamadas)
+            foreach(Llamada llamada in llamadas)
             {
                 total += llamada.CalcularCosto();
             }
-
             return total;
         }
     }
