@@ -1,0 +1,192 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GestorInfraccionesTransito
+{
+    public class Conductor
+    {
+        // Definir variables para almacenar datos del conductor
+        string nombreConductor, cedula, direccion, tipoLicencia;
+        DateTime fechaNacimiento;
+
+        public void RegistrarConductor()
+        {
+            // Solicitar datos del conductor
+            Console.WriteLine("Ingrese los datos del conductor:");
+            Console.Write("Nombre completo: ");
+            nombreConductor = Console.ReadLine();
+            Console.Write("Cédula: ");
+            cedula = Console.ReadLine();
+            Console.Write("Dirección: ");
+            direccion = Console.ReadLine();
+            Console.Write("Tipo de licencia (A, B, C): ");
+            tipoLicencia = Console.ReadLine();
+            Console.Write("Fecha de nacimiento (mm/dd/aaaa): ");
+            fechaNacimiento = DateTime.Parse(Console.ReadLine());
+        }
+
+        public void MostrarDatos()
+        {
+            Console.WriteLine("\n -DATOS DEL CONDUCTOR");
+            Console.WriteLine("Nombre: " + nombreConductor);
+            Console.WriteLine("Cédula: " + cedula);
+            Console.WriteLine("Dirección: " + direccion);
+            Console.WriteLine("Tipo de licencia: " + tipoLicencia);
+            Console.WriteLine("Fecha de nacimiento: " + fechaNacimiento);
+        }
+    }
+
+    public class Vehiculo
+    {
+        string placa, marca, modelo, color, numeroChasis;
+        int ano;
+
+        public void RegistrarVehiculo()
+        {
+            // Solicitar datos del vehículo
+            Console.WriteLine("\n Ingrese los datos del vehículo:");
+            Console.Write("Placa: ");
+            placa = Console.ReadLine();
+            Console.Write("Marca: ");
+            marca = Console.ReadLine();
+            Console.Write("Modelo: ");
+            modelo = Console.ReadLine();
+            Console.Write("Color: ");
+            color = Console.ReadLine();
+            Console.Write("Año: ");
+            ano = int.Parse(Console.ReadLine());
+            Console.Write("Número de chasis: ");
+            numeroChasis = Console.ReadLine();
+        }
+
+        public void MostrarDatos()
+        {
+            Console.WriteLine("\n\n -DATOS DEL VEHICULO");
+            Console.WriteLine("Placa: " + placa);
+            Console.WriteLine("Marca: " + marca);
+            Console.WriteLine("Modelo: " + modelo);
+            Console.WriteLine("Color: " + color);
+            Console.WriteLine("Año: " + ano.ToString());
+            Console.WriteLine("Número de chasis: " + numeroChasis);
+        }
+    }
+
+    public class Agente
+    {
+        // Definir variables para almacenar datos del agente de tránsito
+        string codigoAgente, nombreAgente, direccionAgente;
+        DateTime fechaIngresoAgente;
+
+        public void RegistrarAgente()
+        {
+            // Solicitar datos del agente de tránsito
+            Console.WriteLine("\nIngrese los datos del agente de tránsito:");
+            Console.Write("Código de empleado: ");
+            codigoAgente = Console.ReadLine();
+            Console.Write("Nombre completo: ");
+            nombreAgente = Console.ReadLine();
+            Console.Write("Dirección: ");
+            direccionAgente = Console.ReadLine();
+            Console.Write("Fecha de ingreso (mm/dd/aaaa): ");
+            fechaIngresoAgente = DateTime.Parse(Console.ReadLine());
+        }
+
+        public void MostrarDatos()
+        {
+            Console.WriteLine("\n\n -DATOS DEL AGENTE");
+            Console.WriteLine("Código de empleado: " + codigoAgente);
+            Console.WriteLine("Nombre: " + nombreAgente);
+            Console.WriteLine("Dirección: " + direccionAgente);
+            Console.WriteLine("Fecha de ingreso: " + fechaIngresoAgente);
+        }
+    }
+
+    public class Infraccion
+    {
+        // Definir variable para almacenar el tipo de infracción y su penalidad
+        string tipoInfraccion;
+        int penalidad;
+
+        public void RegistrarInfraccion()
+        {
+
+            // Solicitar tipo de infracción y calcular su penalidad
+            Console.WriteLine("\nIngrese el tipo de infracción:");
+            Console.WriteLine("1. Obstrucción de tránsito (penalidad: 1800)");
+            Console.WriteLine("2. Pase de semáforo en rojo (penalidad: 5959)");
+            Console.WriteLine("3. Hablar por el celular (penalidad: 3750)");
+            Console.WriteLine("4. Conducir sin cinturón (penalidad: 2560)");
+            Console.WriteLine("5. Licencia vencida (penalidad: 3890)");
+            int opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1:
+                    tipoInfraccion = "Obstrucción de tránsito";
+                    penalidad = 1800;
+                    break;
+                case 2:
+                    tipoInfraccion = "Pase de semáforo en rojo";
+                    penalidad = 5959;
+                    break;
+                case 3:
+                    tipoInfraccion = "Hablar por el celular";
+                    penalidad = 3750;
+                    break;
+
+                case 4:
+                    tipoInfraccion = "Conducir sin cinturón";
+                    penalidad = 2560;
+                    break;
+
+                case 5:
+                    tipoInfraccion = "Licencia vencida";
+                    penalidad = 3890;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public void MostrarDatos()
+        {
+            Console.WriteLine("\n\n -DATOS DE LA INFRACCION");
+            Console.WriteLine("Tipo de Infraccion: " + tipoInfraccion);
+            Console.WriteLine("Penalidad: " + penalidad.ToString());
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Conductor conductor = new Conductor();
+            conductor.RegistrarConductor();
+
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo.RegistrarVehiculo();
+
+            Agente agente = new Agente();
+            agente.RegistrarAgente();
+
+            Infraccion infraccion = new Infraccion();
+            infraccion.RegistrarInfraccion();
+
+            Console.WriteLine("#### RESUMEN DATOS REGISTRADOS #####");
+
+            conductor.MostrarDatos();
+            vehiculo.MostrarDatos();
+            agente.MostrarDatos();
+            infraccion.MostrarDatos();
+
+            Console.ReadLine();
+        }
+    }
+}
+
+
